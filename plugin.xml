@@ -26,8 +26,21 @@
             </feature>
         </config-file>
 
-        <source-file src="src/android/de/schnocklake/cordova/USBSerial.java"
-            target-dir="src/de/schnocklake/cordova"/>
+        <source-file src="src/android/de/schnocklake/cordova/USBSerial.java" target-dir="src/de/schnocklake/cordova"/>
+        <source-file src="src/android/com/hoho/android/usbserial/BuildInfo.java" target-dir="src//hoho/android/usbserial"/>
+        <source-file src="src/android/com/hoho/android/usbserial/driver/CdcAcmSerialDriver.java" target-dir="src//hoho/android/usbserial/diver"/>
+        <source-file src="src/android/com/hoho/android/usbserial/driver/CommonUsbSerialPort.java" target-dir="src//hoho/android/usbserial/diver"/>
+        <source-file src="src/android/com/hoho/android/usbserial/driver/Cp21xxSerialDriver.java" target-dir="src//hoho/android/usbserial/diver"/>
+        <source-file src="src/android/com/hoho/android/usbserial/driver/FtdiSerialDriver.java" target-dir="src//hoho/android/usbserial/diver"/>
+        <source-file src="src/android/com/hoho/android/usbserial/driver/ProbeTable.java" target-dir="src//hoho/android/usbserial/diver"/>
+        <source-file src="src/android/com/hoho/android/usbserial/driver/ProlificSerialDriver.java" target-dir="src//hoho/android/usbserial/diver"/>
+        <source-file src="src/android/com/hoho/android/usbserial/driver/UsbId.java" target-dir="src//hoho/android/usbserial/diver"/>
+        <source-file src="src/android/com/hoho/android/usbserial/driver/UsbSerialDriver.java" target-dir="src//hoho/android/usbserial/diver"/>
+        <source-file src="src/android/com/hoho/android/usbserial/driver/UsbSerialPort.java" target-dir="src//hoho/android/usbserial/diver"/>
+        <source-file src="src/android/com/hoho/android/usbserial/driver/UsbSerialProber.java" target-dir="src//hoho/android/usbserial/diver"/>
+        <source-file src="src/android/com/hoho/android/usbserial/driver/UsbSerialRuntimeException.java" target-dir="src//hoho/android/usbserial/diver"/>
+        <source-file src="src/android/com/hoho/android/usbserial/util/HexDump.java" target-dir="src//hoho/android/usbserial/util"/>
+        <source-file src="src/android/com/hoho/android/usbserial/util/SerialInputOutputManager.java" target-dir="src//hoho/android/usbserial/util"/>
 
         <!-- kludge for 2.9 -->
         <source-file src="src/android/org/apache/cordova/api/Dummy.java"
