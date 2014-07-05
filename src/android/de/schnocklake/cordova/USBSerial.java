@@ -136,7 +136,7 @@ public class USBSerial extends CordovaPlugin {
 
 		} else if (action.equals(IS_ENABLED)) {
 
-			callbackContext.error("function not implemented");
+			callbackContext.success();    
 
 		} else if (action.equals(IS_CONNECTED)) {
 /*
@@ -162,7 +162,7 @@ public class USBSerial extends CordovaPlugin {
 
 	/**
 	 * Write on the serial port
-	 * 
+	 *
 	 * @param data
 	 *            the {@link String} representation of the data to be written on
 	 *            the port
@@ -192,7 +192,7 @@ public class USBSerial extends CordovaPlugin {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		
+
 /*TODO disconnect usb */
 	}
 
@@ -201,14 +201,14 @@ public class USBSerial extends CordovaPlugin {
 		Log.i(TAG, "listBondedDevices");
 		UsbManager mUsbManager = (UsbManager) cordova.getActivity()
 				.getSystemService(Context.USB_SERVICE);
-		
+
 
 		Log.i(TAG, "usbDeviceList");
 		JSONArray deviceList = new JSONArray();
 
 		List<UsbSerialDriver> drivers = UsbSerialProber.getDefaultProber()
 				.findAllDrivers(mUsbManager);
-		
+
 		/*
 		 * HashMap<String, UsbDevice> usbDeviceList = mUsbManager.getDeviceList();
 		 * for (String deviceName : usbDeviceList.keySet()) { Log.i(TAG,
@@ -267,7 +267,7 @@ public class USBSerial extends CordovaPlugin {
 				buffer.delete(0, index + c.length());
 				index = buffer.indexOf(c, 0);
 
-				
+
 				Log.d(TAG, "USB Date to subscriber: "
 						+ data);
 				if (dataAvailableCallback != null) {
@@ -276,8 +276,8 @@ public class USBSerial extends CordovaPlugin {
 					result.setKeepCallback(true);
 
 					dataAvailableCallback.sendPluginResult(result);
-					
-					
+
+
 				}
 			}
 
