@@ -136,21 +136,21 @@ public class USBSerial extends CordovaPlugin {
 
 		} else if (action.equals(IS_ENABLED)) {
 
-			callbackContext.success();    
+			callbackContext.success();
 
-		} else if (action.equals(IS_CONNECTED)) {
-/*
+/*		} else if (action.equals(IS_CONNECTED)) {
+
 			if (bluetoothSerialService.getState() == BluetoothSerialService.STATE_CONNECTED) {
 				callbackContext.success();
 			} else {
 				callbackContext.error("Not connected.");
 			}
-*/
 		} else if (action.equals(CLEAR)) {
 
 			buffer.setLength(0);
 			callbackContext.success();
 
+*/
 		} else {
 
 			validAction = false;
