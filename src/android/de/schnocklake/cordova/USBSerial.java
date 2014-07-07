@@ -30,6 +30,8 @@ import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.util.Log;
 
+import com.hoho.android.usbserial.driver.CdcAcmSerialDriver;
+import com.hoho.android.usbserial.driver.ProbeTable;
 import com.hoho.android.usbserial.driver.UsbSerialDriver;
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.hoho.android.usbserial.driver.UsbSerialProber;
@@ -76,6 +78,19 @@ public class USBSerial extends CordovaPlugin {
 	StringBuffer buffer = new StringBuffer();
 	private String delimiter;
 
+	
+
+	private static UsbSerialProber customProber;
+	{
+		ProbeTable customProbeTable = new ProbeTable();
+		customProbeTable.addProduct(0x1519, 0x0020, CdcAcmSerialDriver.class);
+		customProbeTable.addProduct(0x0483, 0x5740, CdcAcmSerialDriver.class);
+	
+		customProber = new UsbSerialProber(customProbeTable);
+	}
+	
+	
+	
 	@Override
 	public boolean execute(String action, CordovaArgs args,
 			CallbackContext callbackContext) throws JSONException {
@@ -206,7 +221,7 @@ public class USBSerial extends CordovaPlugin {
 		Log.i(TAG, "usbDeviceList");
 		JSONArray deviceList = new JSONArray();
 
-		List<UsbSerialDriver> drivers = UsbSerialProber.getDefaultProber()
+		List<UsbSerialDriver> drivers = customProber
 				.findAllDrivers(mUsbManager);
 
 		/*
@@ -374,7 +389,7 @@ public class USBSerial extends CordovaPlugin {
 
 		sPort = null;
 
-		List<UsbSerialDriver> drivers = UsbSerialProber.getDefaultProber()
+		List<UsbSerialDriver> drivers = customProber
 				.findAllDrivers(mUsbManager);
 
 		for (UsbSerialDriver driver : drivers) {
