@@ -271,7 +271,11 @@ public class USBSerial extends CordovaPlugin {
 		public void onNewData(final byte[] usbReceivedData) {
 			Log.d(TAG, "Runner onNewData. usbReceivedData: "
 					+ new String(usbReceivedData));
-
+			
+			
+			//nobody subscribed to the data, so skip
+			if (delimiter == null)
+				return;
 			buffer.append(new String(usbReceivedData));
 
 			String c = delimiter;
